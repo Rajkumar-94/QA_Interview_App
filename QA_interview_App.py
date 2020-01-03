@@ -12,14 +12,14 @@ import math
 def setUp():
     "This functions launched the browser and navigats to QA interview app page"
     global driver
-    driver = webdriver.Firefox()
+    driver = webdriver.Chrome()
     driver.maximize_window()
     driver.implicitly_wait(10)
     driver.get("https://qainterview.pythonanywhere.com/")
     
 def tearDown():
     "This functions closes the browser"
-    driver.close()
+    driver.quit()
 
 def test_factorial_function():
     "This function verifies whether it is navigated toexpected screen, takes the input from user, checks whether the value is in range, calculates the factorial from the web page and from inbuilt module, compares the actual and obtained value and gives the result"
@@ -48,10 +48,11 @@ def test_factorial_function():
 
                 #Python code using inbuilt module to obatain factorial value for the given input"
                 p_fact_value=math.factorial(fact_value)
-                print("The factorial value using by factorial function via math module is ",fact_value)
+                
 
                 #Formats the interger to exponential e, so that it can be compared with Web App result
                 p_formatted=format(p_fact_value,'e')
+                print("The factorial value using by factorial function via math module is ",p_formatted)
                 p_output=p_formatted.split(" ")
                 p_value=p_output[-1]
                 
@@ -116,9 +117,10 @@ def test_terms():
     
 
 def test_privacy():
+    
     "This function used to verify the Privacy link"
     driver.find_element_by_xpath("//a[contains(text(),'Privacy')]").click()
-    
+    time.sleep(2)   
     if driver.current_url=='https://qainterview.pythonanywhere.com/privacy':
         print("Pass: The page navigated to Privacy screen")
     else:
