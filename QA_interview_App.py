@@ -14,7 +14,7 @@ def setUp():
     "This functions launched the browser and navigats to QA interview app page"
     global driver
     driver = webdriver.Chrome()
-    driver.maximize_window()
+    #driver.maximize_window()
     driver.implicitly_wait(10)
     driver.get("https://qainterview.pythonanywhere.com/")
     
