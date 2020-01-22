@@ -8,12 +8,13 @@ Verifying the factorila is done by, converting the value to exponential e form a
 from selenium import webdriver
 import time
 import math
+import conf
 
 def setUp():
     "This functions launched the browser and navigats to QA interview app page"
     global driver
     driver = webdriver.Chrome()
-    #driver.maximize_window()
+    driver.maximize_window()
     driver.implicitly_wait(10)
     driver.get("https://qainterview.pythonanywhere.com/")
     
@@ -37,7 +38,8 @@ def test_factorial_function():
     while True:
         try:
             #Takes the input value from user
-            fact_value=int(input("Enter the digit for which you want to obatain the Factorial Value: "))
+            #fact_value=int(input("Enter the digit for which you want to obatain the Factorial Value: "))
+            fact_value=conf.fact_value
             u_input=driver.find_element_by_xpath("//input[@id='number']")
             u_input.clear()
             u_input.send_keys('%d'%fact_value)
