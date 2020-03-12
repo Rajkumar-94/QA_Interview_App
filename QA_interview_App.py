@@ -6,6 +6,7 @@ Verifying the factorila is done by, converting the value to exponential e form a
 """
 
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 import time
 import math
 import conf
@@ -13,6 +14,9 @@ import conf
 def setUp():
     "This functions launched the browser and navigats to QA interview app page"
     global driver
+    options = Options()
+    options.add_argument("--headless")
+    options.add_argument("window-size=1400,1500")
     driver = webdriver.Chrome()
     #driver.maximize_window()
     driver.implicitly_wait(10)
